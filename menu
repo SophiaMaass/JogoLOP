@@ -1,0 +1,137 @@
+var tela = 1;
+var xMenu = 140 ;
+var yMenu1 = 245;
+var yMenu2 = 315;
+var largura = 200 ;
+var largura2 = 100;
+var altura = 50 ;
+
+function keyPressed(){
+  }
+
+let img;
+//imagens
+function preload() {
+  img = loadImage('menuofc.gif ');
+  img1 = loadImage('PARADA.gif')
+  img2 = loadImage('original.gif')
+  fase1 = loadImage('fase1.gif')
+}
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+
+
+  // tela 1 menu
+  if(tela==1){
+    
+    //Menu com 2 opções
+    background(120,0,120);
+    image(img,0,0);
+      textAlign(CENTER);
+    textSize(16);
+    textStyle(BOLDITALIC)
+ 
+    
+    //créditos
+    fill(220);
+    noStroke();
+    text("Créditos:"+"Sophia C. Maass"+"\n"+ "bacharelanda do BCT/UFRN", 360,110);
+    textSize(26)
+    
+    //titulo Matemagicando
+    stroke(200);
+    fill('#fae');
+    rect(130,165,230,altura);
+    fill(160,0,180)
+    text("Matemagicando",240,200)
+
+    //Iniciar jogo
+    if(mouseX > xMenu && mouseX<xMenu+largura && mouseY>yMenu1 && mouseY<yMenu1+altura ){
+    stroke(200);
+    fill(240);
+    rect(xMenu,yMenu1,largura,altura,15);
+         if(mouseIsPressed){
+        tela = 3;
+      }
+  }
+    fill(220,0,220);
+    noStroke();
+    text("Iniciar", 240,280);
+    
+    //Info do jogo
+    if(mouseX > xMenu && mouseX<xMenu+largura && mouseY>yMenu2 && mouseY<yMenu2+altura ){
+    stroke(200);
+    fill(240);
+    rect(xMenu,yMenu2,largura,altura,15);
+      if(mouseIsPressed){
+        tela = 2;
+      }
+    }
+    
+    fill(220,0,220);
+    noStroke();
+    text("Modo de Jogo", 240,350);
+  }
+  
+  //tela 2 modo de jogo
+if(tela==2){
+  textAlign(CENTER);
+    textSize(16);
+ 
+  image(img2,0,0)
+  
+  //instruções
+    stroke(200);
+    fill(250);
+    rect(100,70,300,300,15);
+  
+  fill(220,0,220);
+    noStroke();
+  textStyle(BOLD)
+    text("INSTRUÇÕES DE JOGO:"+"\n",250,120)
+  textStyle(NORMAL)
+  text("\n"+"Parabéns!"+"\n"+"Você é a nossa nova garota mágica."+"\n"+"Seu super poder é o cálculo",250,120);
+  
+  //botao volta
+ 
+     stroke(200);
+    fill(250);
+    rect(50,420,largura2,altura,15);
+      if(mouseX > 55 && mouseX<55+largura2 && mouseY>420 && mouseY<420+altura){
+        if(mouseIsPressed){
+          tela = 1;
+      }
+      }
+   fill(220,0,220);
+    noStroke();
+    text("voltar",100,450);
+ 
+ 
+}
+  
+  //tela 3 jogo
+  if(tela==3){
+
+    if (keyIsPressed === true) {
+    if(keyCode === SHIFT){
+      tela = 1;
+  }
+}
+  
+  background(300);
+    image(fase1,0,0)
+  image(img1,100,80);
+    
+    //orientação
+   textSize(16)
+    textStyle(BOLD)
+  fill('#fae');
+    noStroke();
+    text("APERTE SHIFT PARA RETORNAR AO MENU", 170,40);
+    
+}
+  }
